@@ -24,7 +24,7 @@ public class OpenIDAuthenticationProvider implements AuthenticationProvider {
 
     public AuthenticatedUser updateAuthenticatedUser(AuthenticatedUser authenticatedUser, Credentials credentials) throws GuacamoleException {
         logger.debug("updateAuthenticatedUser()");
-        return null;
+        return authenticatedUser;
     }
 
     public UserContext getUserContext(AuthenticatedUser authenticatedUser) throws GuacamoleException {
@@ -34,6 +34,6 @@ public class OpenIDAuthenticationProvider implements AuthenticationProvider {
 
     public UserContext updateUserContext(UserContext userContext, AuthenticatedUser authenticatedUser) throws GuacamoleException {
         logger.debug("updateUserContext()");
-        return null;
+        return userContext;
     }
 }
