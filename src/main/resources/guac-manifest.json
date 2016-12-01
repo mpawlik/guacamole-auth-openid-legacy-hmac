@@ -4,5 +4,13 @@
   "namespace": "guac-openid-legacy",
   "authProviders": [
     "pl.cyfronet.kdm.guacamole.auth.openid.OpenIDAuthenticationProvider"
+  ],
+  "js": [
+    "openidModule.js",
+    "openidController.js",
+    "openidConfig.js"
+  ],
+  "css": [
+    "openid-ui.css"
   ]
 }
