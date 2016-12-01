@@ -19,7 +19,9 @@ public class OpenIDAuthenticationProvider implements AuthenticationProvider {
 
     public AuthenticatedUser authenticateUser(Credentials credentials) throws GuacamoleException {
         logger.debug("authenticateUser()");
-        return null;
+
+        OpenIDAuthenticationService openIDAuthenticationService = new OpenIDAuthenticationService();
+        return openIDAuthenticationService.authenticateUser(credentials);
     }
 
     public AuthenticatedUser updateAuthenticatedUser(AuthenticatedUser authenticatedUser, Credentials credentials) throws GuacamoleException {
