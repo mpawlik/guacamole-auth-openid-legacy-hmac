@@ -12,6 +12,7 @@ public class OpenIDField extends Field {
     }
 
 
+
     public OpenIDField(String authorizationEndpoint) {
         super(PARAMETER_NAME, "GUAC_OPENID_TOKEN");
         this.authorizationURI = authorizationEndpoint;

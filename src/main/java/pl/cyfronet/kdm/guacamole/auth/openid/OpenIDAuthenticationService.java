@@ -52,6 +52,9 @@ public class OpenIDAuthenticationService {
             discoveries = consumerManager.discover("https://openid.plgrid.pl/gateway");
             discovered = consumerManager.associate(discoveries);
 
+            logger.debug("discovered types: {}", discovered.getTypes());
+            logger .debug("version2: {}", discovered.isVersion2());
+
             FetchRequest fetch = FetchRequest.createFetchRequest();
             fetch.addAttribute("email", "http://schema.openid.net/contact/email", true);
 
