@@ -50,10 +50,8 @@ public class OpenIDAuthenticationService {
         //initialize parameters from properties
         Environment environment = new LocalEnvironment();
 
-//        openIdEndpoint = "https://openid.plgrid.pl/gateway";
         openIdEndpoint = environment.getRequiredProperty(OpenIDAuthenticationProperties.OPENID_ENDPOINT);
         logger.debug("Setting openIdEndpoint to: {}", openIdEndpoint);
-//        returnToUrl = "https://viz.pro.cyfronet.pl/screen/";
         returnToUrl = environment.getRequiredProperty(OpenIDAuthenticationProperties.OPENID_RETURNTOURL);
         logger.debug("Setting returnToUrl to: {}", returnToUrl);
     }

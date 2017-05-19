@@ -8,13 +8,13 @@ public class OpenIDAuthenticationProperties {
 
     public static final StringGuacamoleProperty OPENID_ENDPOINT = new StringGuacamoleProperty() {
         public String getName() {
-            return "openid-endpoint";
+            return "openid-legacy-endpoint";
         }
     };
 
     public static final StringGuacamoleProperty OPENID_RETURNTOURL = new StringGuacamoleProperty() {
         public String getName() {
-            return "openid-returntourl";
+            return "openid-legacy-returntourl";
         }
     };
 }
