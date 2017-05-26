@@ -39,6 +39,7 @@ public class OpenIDAuthenticationService {
     private static ConsumerManager consumerManager;
     private final String openIdEndpoint;
     private final String returnToUrl;
+    private final String realm;
 
     {
         logger.debug("Creating new ConsumerManagera");
@@ -58,6 +59,8 @@ public class OpenIDAuthenticationService {
         logger.debug("Setting openIdEndpoint to: {}", openIdEndpoint);
         returnToUrl = environment.getRequiredProperty(OpenIDAuthenticationProperties.OPENID_RETURNTOURL);
         logger.debug("Setting returnToUrl to: {}", returnToUrl);
+        realm = environment.getRequiredProperty(OpenIDAuthenticationProperties.OPENID_REALM);
+        logger.debug("Setting realm to: {}", realm);
     }
 
     public AuthenticatedUser authenticateUser(Credentials credentials) throws GuacamoleException {
@@ -118,7 +121,7 @@ public class OpenIDAuthenticationService {
                 fetch.addAttribute(FIELD_EMAIL_NAME, FIELD_EMAIL_URI, true);
 
                 AuthRequest authReq = consumerManager.authenticate(discovered, returnToUrl);
-//                AuthRequest authReq = consumerManager.authenticate(discovered, returnToUrl + "?is_return=true");
+                authReq.setRealm(realm);
                 authReq.addExtension(fetch);
 
                 String destinationUrl = authReq.getDestinationUrl(true);

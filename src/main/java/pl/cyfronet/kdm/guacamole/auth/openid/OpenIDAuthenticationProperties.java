@@ -17,4 +17,10 @@ public class OpenIDAuthenticationProperties {
             return "openid-legacy-returntourl";
         }
     };
+
+    public static final StringGuacamoleProperty OPENID_REALM = new StringGuacamoleProperty() {
+        public String getName() {
+            return "openid-legacy-realm";
+        }
+    };
 }
