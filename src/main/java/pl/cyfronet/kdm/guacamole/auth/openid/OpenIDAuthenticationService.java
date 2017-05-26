@@ -39,7 +39,7 @@ public class OpenIDAuthenticationService {
     private final String returnToUrl;
     private final String realm;
 
-    {
+    static {
         logger.debug("Creating new ConsumerManagera");
         consumerManager = new ConsumerManager();
         consumerManager.setAssociations(new InMemoryConsumerAssociationStore());
