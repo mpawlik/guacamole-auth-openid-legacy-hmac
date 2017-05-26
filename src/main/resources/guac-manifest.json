@@ -1,5 +1,5 @@
 {
-  "guacamoleVersion": "0.9.9",
+  "guacamoleVersion": "0.9.12-incubating",
   "name": "Legacy OpenID Authentication Extension",
   "namespace": "guac-openid-legacy",
   "authProviders": [

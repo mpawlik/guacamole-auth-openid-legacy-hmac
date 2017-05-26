@@ -1,6 +1,6 @@
 package pl.cyfronet.kdm.guacamole.auth.openid;
 
-import org.glyptodon.guacamole.properties.StringGuacamoleProperty;
+import org.apache.guacamole.properties.StringGuacamoleProperty;
 
 public class OpenIDAuthenticationProperties {
     public OpenIDAuthenticationProperties() {

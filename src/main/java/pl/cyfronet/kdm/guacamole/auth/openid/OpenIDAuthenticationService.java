@@ -1,14 +1,13 @@
 package pl.cyfronet.kdm.guacamole.auth.openid;
 
-import org.glyptodon.guacamole.GuacamoleException;
-import org.glyptodon.guacamole.environment.Environment;
-import org.glyptodon.guacamole.environment.LocalEnvironment;
-import org.glyptodon.guacamole.form.Field;
-import org.glyptodon.guacamole.net.auth.AuthenticatedUser;
-import org.glyptodon.guacamole.net.auth.AuthenticationProvider;
-import org.glyptodon.guacamole.net.auth.Credentials;
-import org.glyptodon.guacamole.net.auth.credentials.CredentialsInfo;
-import org.glyptodon.guacamole.net.auth.credentials.GuacamoleInvalidCredentialsException;
+import org.apache.guacamole.GuacamoleException;
+import org.apache.guacamole.environment.Environment;
+import org.apache.guacamole.environment.LocalEnvironment;
+import org.apache.guacamole.form.Field;
+import org.apache.guacamole.net.auth.AuthenticatedUser;
+import org.apache.guacamole.net.auth.Credentials;
+import org.apache.guacamole.net.auth.credentials.CredentialsInfo;
+import org.apache.guacamole.net.auth.credentials.GuacamoleInvalidCredentialsException;
 import org.openid4java.OpenIDException;
 import org.openid4java.association.AssociationException;
 import org.openid4java.association.AssociationSessionType;
@@ -69,12 +68,12 @@ public class OpenIDAuthenticationService {
 
         logger.debug("queryURL: {}", httpServletRequest.getRequestURI());
         logger.debug("queryString: {}", httpServletRequest.getQueryString());
-        for (Enumeration e = httpServletRequest.getAttributeNames(); e.hasMoreElements();) {
+        for (Enumeration e = httpServletRequest.getAttributeNames(); e.hasMoreElements(); ) {
             logger.debug("attribute: {}", e.nextElement());
         }
         logger.debug("parameterCount: {}", httpServletRequest.getParameterMap().keySet().size());
 
-        for( Object keyObj : httpServletRequest.getParameterMap().keySet()) {
+        for (Object keyObj : httpServletRequest.getParameterMap().keySet()) {
             String key = (String) keyObj;
             logger.debug("key: {}", key);
         }

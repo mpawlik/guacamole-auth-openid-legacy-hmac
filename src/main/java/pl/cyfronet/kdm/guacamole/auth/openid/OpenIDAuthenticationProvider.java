@@ -1,11 +1,10 @@
 package pl.cyfronet.kdm.guacamole.auth.openid;
 
-import org.glyptodon.guacamole.GuacamoleException;
-import org.glyptodon.guacamole.net.auth.AuthenticatedUser;
-import org.glyptodon.guacamole.net.auth.AuthenticationProvider;
-import org.glyptodon.guacamole.net.auth.Credentials;
-import org.glyptodon.guacamole.net.auth.UserContext;
-import org.openid4java.discovery.DiscoveryException;
+import org.apache.guacamole.GuacamoleException;
+import org.apache.guacamole.net.auth.AuthenticatedUser;
+import org.apache.guacamole.net.auth.AuthenticationProvider;
+import org.apache.guacamole.net.auth.Credentials;
+import org.apache.guacamole.net.auth.UserContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -37,7 +36,7 @@ public class OpenIDAuthenticationProvider implements AuthenticationProvider {
         return null;
     }
 
-    public UserContext updateUserContext(UserContext userContext, AuthenticatedUser authenticatedUser) throws GuacamoleException {
+    public UserContext updateUserContext(UserContext userContext, AuthenticatedUser authenticatedUser, Credentials credentials) throws GuacamoleException {
         logger.debug("updateUserContext()");
         return userContext;
     }

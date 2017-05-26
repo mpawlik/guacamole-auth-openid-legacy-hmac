@@ -1,6 +1,6 @@
 package pl.cyfronet.kdm.guacamole.auth.openid.form;
 
-import org.glyptodon.guacamole.form.Field;
+import org.apache.guacamole.form.Field;
 
 public class OpenIDField extends Field {
 
