@@ -32,8 +32,6 @@ import java.util.Map;
 public class OpenIDAuthenticationService {
 
     private static final Logger logger = LoggerFactory.getLogger(OpenIDAuthenticationService.class);
-    public static final String FIELD_EMAIL_URI = "http://schema.openid.net/contact/email";
-    public static final String FIELD_EMAIL_NAME = "email";
 
 
     private static ConsumerManager consumerManager;
@@ -80,7 +78,7 @@ public class OpenIDAuthenticationService {
             String key = (String) keyObj;
             logger.debug("key: {}", key);
         }
-        if (httpServletRequest.getParameter("openid.op_endpoint") != null) {
+        if (httpServletRequest.getParameter("openid.identity") != null) {
             logger.debug("authenticateUser(): handle reposnse");
             try {
                 //handle incoming openid response
@@ -117,12 +115,8 @@ public class OpenIDAuthenticationService {
 
                 httpServletRequest.getSession().setAttribute("openid-disc", discovered);
 
-                FetchRequest fetch = FetchRequest.createFetchRequest();
-                fetch.addAttribute(FIELD_EMAIL_NAME, FIELD_EMAIL_URI, true);
-
                 AuthRequest authReq = consumerManager.authenticate(discovered, returnToUrl);
                 authReq.setRealm(realm);
-                authReq.addExtension(fetch);
 
                 String destinationUrl = authReq.getDestinationUrl(true);
                 logger.debug("destinationURL: {}", destinationUrl);
@@ -133,22 +127,11 @@ public class OpenIDAuthenticationService {
                                 )
                         }))
                 );
-            } catch (DiscoveryException e) {
-                e.printStackTrace();
-            } catch (ConsumerException e) {
-                e.printStackTrace();
-            } catch (MessageException e) {
+            } catch (OpenIDException e) {
                 e.printStackTrace();
             }
 
         }
-//        throw new GuacamoleInvalidCredentialsException("Invalid login",
-//                new CredentialsInfo(Arrays.asList(new Field[]{
-//                        new OpenIDField(
-//                                "asd"
-//                        )
-//                }))
-//        );
         return null;
     }
 
