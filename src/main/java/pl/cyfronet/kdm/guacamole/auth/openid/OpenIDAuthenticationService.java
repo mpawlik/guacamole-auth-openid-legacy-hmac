@@ -5,6 +5,7 @@ import org.glyptodon.guacamole.environment.Environment;
 import org.glyptodon.guacamole.environment.LocalEnvironment;
 import org.glyptodon.guacamole.form.Field;
 import org.glyptodon.guacamole.net.auth.AuthenticatedUser;
+import org.glyptodon.guacamole.net.auth.AuthenticationProvider;
 import org.glyptodon.guacamole.net.auth.Credentials;
 import org.glyptodon.guacamole.net.auth.credentials.CredentialsInfo;
 import org.glyptodon.guacamole.net.auth.credentials.GuacamoleInvalidCredentialsException;
@@ -25,6 +26,7 @@ import pl.cyfronet.kdm.guacamole.auth.openid.form.OpenIDField;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Arrays;
+import java.util.Enumeration;
 import java.util.List;
 import java.util.Map;
 
@@ -66,6 +68,10 @@ public class OpenIDAuthenticationService {
         HttpServletRequest httpServletRequest = credentials.getRequest();
 
         logger.debug("queryURL: {}", httpServletRequest.getRequestURI());
+        logger.debug("queryString: {}", httpServletRequest.getQueryString());
+        for (Enumeration e = httpServletRequest.getAttributeNames(); e.hasMoreElements();) {
+            logger.debug("attribute: {}", e.nextElement());
+        }
         logger.debug("parameterCount: {}", httpServletRequest.getParameterMap().keySet().size());
 
         for( Object keyObj : httpServletRequest.getParameterMap().keySet()) {
@@ -93,6 +99,7 @@ public class OpenIDAuthenticationService {
                     //success!
                     logger.debug("success");
                     logger.debug(verified.getIdentifier());
+                    return null;
                 }
             } catch (OpenIDException e) {
                 e.printStackTrace();
@@ -133,14 +140,14 @@ public class OpenIDAuthenticationService {
             }
 
         }
-        throw new GuacamoleInvalidCredentialsException("Invalid login",
-                new CredentialsInfo(Arrays.asList(new Field[]{
-                        new OpenIDField(
-                                "asd"
-                        )
-                }))
-        );
-//        return null;
+//        throw new GuacamoleInvalidCredentialsException("Invalid login",
+//                new CredentialsInfo(Arrays.asList(new Field[]{
+//                        new OpenIDField(
+//                                "asd"
+//                        )
+//                }))
+//        );
+        return null;
     }
 
 }
