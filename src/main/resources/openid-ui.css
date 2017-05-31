@@ -22,5 +22,10 @@
 
 /* Hide login dialog */
 .login-ui div.login-dialog {
-    display: none;
+    /*display: none;*/
+    visibility: hidden;
+}
+
+div.logo {
+    visibility: visible;
 }
