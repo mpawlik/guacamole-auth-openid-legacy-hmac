@@ -1,7 +1,7 @@
 {
   "guacamoleVersion": "0.9.12-incubating",
   "name": "Legacy OpenID Authentication Extension",
-  "namespace": "guac-openid-legacy",
+  "namespace": "guac-openid-legacy-hmac",
   "authProviders": [
     "pl.cyfronet.kdm.guacamole.auth.openid.OpenIDAuthenticationProvider"
   ],
