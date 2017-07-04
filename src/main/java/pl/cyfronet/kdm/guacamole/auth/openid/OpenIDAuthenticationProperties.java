@@ -33,7 +33,7 @@ public class OpenIDAuthenticationProperties {
 
     public static final StringGuacamoleProperty DEFAULT_PROTOCOL = new StringGuacamoleProperty() {
         public String getName() {
-            return "default-protocol";
+            return "openid-legacy-default-protocol";
         }
     };
 
