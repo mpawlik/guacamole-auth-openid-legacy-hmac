@@ -38,9 +38,10 @@ public class OpenIDAuthenticationService {
     private final String openIdEndpoint;
     private final String returnToUrl;
     private final String realm;
+    private SignatureVerifier signatureVerifier;
 
     static {
-        logger.debug("Creating new ConsumerManagera");
+        logger.debug("Creating new ConsumerManager");
         consumerManager = new ConsumerManager();
         consumerManager.setAssociations(new InMemoryConsumerAssociationStore());
         consumerManager.setNonceVerifier(new InMemoryNonceVerifier(5000));
@@ -59,6 +60,9 @@ public class OpenIDAuthenticationService {
         logger.debug("Setting returnToUrl to: {}", returnToUrl);
         realm = environment.getRequiredProperty(OpenIDAuthenticationProperties.OPENID_REALM);
         logger.debug("Setting realm to: {}", realm);
+
+        String secretKey = environment.getRequiredProperty(OpenIDAuthenticationProperties.SECRET_KEY);
+        signatureVerifier = new SignatureVerifier(secretKey);
     }
 
     public AuthenticatedUser authenticateUser(Credentials credentials) throws GuacamoleException {
@@ -134,5 +138,6 @@ public class OpenIDAuthenticationService {
         }
         return null;
     }
+
 
 }
