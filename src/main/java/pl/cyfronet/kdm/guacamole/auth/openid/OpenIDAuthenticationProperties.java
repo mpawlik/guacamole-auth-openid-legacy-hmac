@@ -31,11 +31,11 @@ public class OpenIDAuthenticationProperties {
         }
     };
 
-    public static final StringGuacamoleProperty DEFAULT_PROTOCOL = new StringGuacamoleProperty() {
-        public String getName() {
-            return "openid-legacy-default-protocol";
-        }
-    };
+//    public static final StringGuacamoleProperty DEFAULT_PROTOCOL = new StringGuacamoleProperty() {
+//        public String getName() {
+//            return "openid-legacy-default-protocol";
+//        }
+//    };
 
     public static final IntegerGuacamoleProperty TIMESTAMP_AGE_LIMIT = new IntegerGuacamoleProperty() {
         public String getName() {

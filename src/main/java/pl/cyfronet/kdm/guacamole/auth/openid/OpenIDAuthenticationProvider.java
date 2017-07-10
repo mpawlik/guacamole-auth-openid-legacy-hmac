@@ -21,9 +21,13 @@ public class OpenIDAuthenticationProvider implements AuthenticationProvider {
 
     public AuthenticatedUser authenticateUser(Credentials credentials) throws GuacamoleException {
         logger.debug("authenticateUser()");
-
-        OpenIDAuthenticationService openIDAuthenticationService = new OpenIDAuthenticationService(credentials.getRequest());
-        return openIDAuthenticationService.authenticateUser(credentials);
+        try {
+            OpenIDAuthenticationService openIDAuthenticationService = new OpenIDAuthenticationService();
+            return openIDAuthenticationService.authenticateUser(this, credentials);
+        } catch (GuacamoleException e) {
+            logger.error("Exception! {}", e);
+            throw e;
+        }
     }
 
     public AuthenticatedUser updateAuthenticatedUser(AuthenticatedUser authenticatedUser, Credentials credentials) throws GuacamoleException {
@@ -33,7 +37,14 @@ public class OpenIDAuthenticationProvider implements AuthenticationProvider {
 
     public UserContext getUserContext(AuthenticatedUser authenticatedUser) throws GuacamoleException {
         logger.debug("getUserContext()");
-        return null;
+        try {
+
+            OpenIDAuthenticationService openIDAuthenticationService = new OpenIDAuthenticationService();
+            return openIDAuthenticationService.getUserContext(this, authenticatedUser);
+        } catch (GuacamoleException e) {
+            logger.error("Exception! {}", e);
+            throw e;
+        }
     }
 
     public UserContext updateUserContext(UserContext userContext, AuthenticatedUser authenticatedUser, Credentials credentials) throws GuacamoleException {
